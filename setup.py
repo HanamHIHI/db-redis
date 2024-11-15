@@ -9,6 +9,7 @@ import time
 import numpy as np
 import pandas as pd
 import requests
+from redis.commands.json.path import Path
 import redis
 from redis.commands.search.field import (
     NumericField,
@@ -17,43 +18,13 @@ from redis.commands.search.field import (
     VectorField,
 )
 from redis.commands.search.indexDefinition import IndexDefinition, IndexType
-
-# URL = ("https://raw.githubusercontent.com/bsbodden/redis_vss_getting_started"
-#        "/main/data/bikes.json"
-#        )
-# response = requests.get(URL, timeout=10)
-# bikes = response.json()
-
-# json.dumps(bikes[0], indent=2)
-
+from redis.commands.search.query import Query
 client = redis.Redis(host="localhost", port=6379, decode_responses=True)
 
-res = client.ping()
-# >>> True
-
-# >>>
-# {
-#   "model": "Summit",
-#   "brand": "nHill",
-#   "price": 1200,
-#   "type": "Mountain Bike",
-#   "specs": {
-#     "material": "alloy",
-#     "weight": "11.3"
-#   },
-#   "description": "This budget mountain bike from nHill performs well..."
-#   "description_embeddings": [
-#     -0.538114607334137,
-#     -0.49465855956077576,
-#     -0.025176964700222015,
-#     ...
-#   ]
-# }
-
-df = pd.read_csv("hanam_mean_vectors_100000.csv",header=None)
-# df
-
+df = pd.read_csv("df_final_v4.csv")
 df_mean_vectors = pd.read_csv("hanam_mean_vectors_100000.csv",header=None)
+
+print(len(df), len(df_mean_vectors))
 
 schema = (
     NumericField("$.idx", as_name="idx"),
@@ -73,9 +44,9 @@ schema = (
         as_name="vector",
     ),
 )
-
 definition = IndexDefinition(prefix=["restaurant:"], index_type=IndexType.JSON)
 res = client.ft("idx:restaurant_vss").create_index(fields=schema, definition=definition)
+print(res)
 
 dict_list = []
 
@@ -83,15 +54,38 @@ for i in range(len(df)):
     row = df.iloc[i]
     vector = df_mean_vectors.iloc[i]
 
-    temp_dict = {
-        "idx": row["0"],
-        "name": row["name"],
-        "addr": row["position"],
-        "dist": row["total_distance"],
-        "reqtime": row["total_time"],
-        "category0": row["category3"],
-        "vector": vector.to_numpy(dtype=np.float32),
-    }
+    if(pd.isna(row["name"]) != True):
+        temp_dict = {
+            "idx": int(row["index"]),
+            "name": row["name"],
+            "addr": str(row["position"]).strip('"').replace('~', ''),
+            "dist": int(row["total_distance"]),
+            "reqtime": int(row["total_time"]),
+            "category0": row["category3"],
+            "vector": vector.astype(np.float32).tolist(),
+        }
+        if(pd.isna(row["category3"]) == True):
+            temp_dict = {
+            "idx": int(row["index"]),
+            "name": row["name"],
+            "addr": str(row["position"]).strip('"'),
+            "dist": int(row["total_distance"]),
+            "reqtime": int(row["total_time"]),
+            "category0": '',
+            "vector": vector.astype(np.float32).tolist(),
+        }
+    else:
+        temp_dict = {
+            "idx": int(row["index"]),
+            "name": '',
+            "addr": '',
+            "dist": -1,
+            "reqtime": -1,
+            "category0": '',
+            "vector": vector.astype(np.float32).tolist(),
+        }
 
-    json_dict = json.dumps(test_dict, ensure_ascii=False).encode('utf-8')
-    client.set(str(row["0"], json_dict))
+    # json_dict = json.dumps(temp_dict, ensure_ascii=False).encode('utf-8')
+    # client.set(str(row["0"], json_dict))
+    # print(row["0"], type(row["index"]), type(str(row["index"].astype(np.int_))), len(vector.astype(np.float32).tolist()))
+    client.json().set("restaurant:"+str(int(row["index"])), Path.root_path(), temp_dict)

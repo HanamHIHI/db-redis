@@ -12,7 +12,7 @@ embeddings = model.encode(["팀점하기 좋은 식당"]).astype(np.float32).tol
 client = redis.Redis(host="localhost", port=6379, decode_responses=True)
 
 query = (
-    Query('*=>[KNN 3 @vector $query_vector AS vector_score]')
+    Query('*=>[KNN 3 @cv $query_vector AS vector_score]')
      .sort_by('vector_score')
      .return_fields('vector_score', 'idx')
      .dialect(2)

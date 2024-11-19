@@ -1,0 +1,96 @@
+touch: cannot touch '/var/lib/redis-stack/.testfile': Permission denied
+Starting redis-stack-server, database path /home/ubuntu/db-redis
+39426:C 18 Nov 2024 12:16:58.171 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+39426:C 18 Nov 2024 12:16:58.171 # WARNING Your system is configured to use the 'xen' clocksource which might lead to degraded performance. Check the result of the [slow-clocksource] system check: run 'redis-server --check-system' to check if the system's clocksource isn't degrading performance.
+39426:C 18 Nov 2024 12:16:58.171 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+39426:C 18 Nov 2024 12:16:58.171 * Redis version=7.4.1, bits=64, commit=00000000, modified=0, pid=39426, just started
+39426:C 18 Nov 2024 12:16:58.171 * Configuration loaded
+39426:M 18 Nov 2024 12:16:58.172 * monotonic clock: POSIX clock_gettime
+39426:M 18 Nov 2024 12:16:58.173 * Running mode=standalone, port=6379.
+39426:M 18 Nov 2024 12:16:58.174 * Module 'RedisCompat' loaded from /opt/redis-stack/lib/rediscompat.so
+39426:M 18 Nov 2024 12:16:58.175 * <search> Redis version found by RedisSearch : 7.4.1 - oss
+39426:M 18 Nov 2024 12:16:58.175 * <search> RediSearch version 2.10.5 (Git=2.10-e2f28a9)
+39426:M 18 Nov 2024 12:16:58.176 * <search> Low level api version 1 initialized successfully
+39426:M 18 Nov 2024 12:16:58.176 * <search> gc: ON, prefix min length: 2, min word length to stem: 4, prefix max expansions: 200, query timeout (ms): 500, timeout policy: return, cursor read size: 1000, cursor max idle (ms): 300000, max doctable size: 1000000, max number of search results:  10000, 
+39426:M 18 Nov 2024 12:16:58.176 * <search> Initialized thread pools!
+39426:M 18 Nov 2024 12:16:58.176 * <search> Enabled role change notification
+39426:M 18 Nov 2024 12:16:58.176 * Module 'search' loaded from /opt/redis-stack/lib/redisearch.so
+39426:M 18 Nov 2024 12:16:58.177 * <timeseries> RedisTimeSeries version 11202, git_sha=5643fd4d6fcb1e9cf084fb2deb9285b08f4a6672
+39426:M 18 Nov 2024 12:16:58.177 * <timeseries> Redis version found by RedisTimeSeries : 7.4.1 - oss
+39426:M 18 Nov 2024 12:16:58.177 * <timeseries> loaded default CHUNK_SIZE_BYTES policy: 4096
+39426:M 18 Nov 2024 12:16:58.177 * <timeseries> loaded server DUPLICATE_POLICY: block
+39426:M 18 Nov 2024 12:16:58.177 * <timeseries> loaded default IGNORE_MAX_TIME_DIFF: 0
+39426:M 18 Nov 2024 12:16:58.177 * <timeseries> loaded default IGNORE_MAX_VAL_DIFF: 0.000000
+39426:M 18 Nov 2024 12:16:58.177 * <timeseries> Setting default series ENCODING to: compressed
+39426:M 18 Nov 2024 12:16:58.177 * <timeseries> Detected redis oss
+39426:M 18 Nov 2024 12:16:58.177 * Module 'timeseries' loaded from /opt/redis-stack/lib/redistimeseries.so
+39426:M 18 Nov 2024 12:16:58.177 * <ReJSON> Created new data type 'ReJSON-RL'
+39426:M 18 Nov 2024 12:16:58.177 * <ReJSON> version: 20803 git sha: unknown branch: unknown
+39426:M 18 Nov 2024 12:16:58.177 * <ReJSON> Exported RedisJSON_V1 API
+39426:M 18 Nov 2024 12:16:58.177 * <ReJSON> Exported RedisJSON_V2 API
+39426:M 18 Nov 2024 12:16:58.178 * <ReJSON> Exported RedisJSON_V3 API
+39426:M 18 Nov 2024 12:16:58.178 * <ReJSON> Exported RedisJSON_V4 API
+39426:M 18 Nov 2024 12:16:58.178 * <ReJSON> Exported RedisJSON_V5 API
+39426:M 18 Nov 2024 12:16:58.178 * <ReJSON> Enabled diskless replication
+39426:M 18 Nov 2024 12:16:58.178 * Module 'ReJSON' loaded from /opt/redis-stack/lib/rejson.so
+39426:M 18 Nov 2024 12:16:58.178 * <search> Acquired RedisJSON_V5 API
+39426:M 18 Nov 2024 12:16:58.178 * <bf> RedisBloom version 2.8.2 (Git=unknown)
+39426:M 18 Nov 2024 12:16:58.178 * Module 'bf' loaded from /opt/redis-stack/lib/redisbloom.so
+39426:M 18 Nov 2024 12:16:58.178 * <redisgears_2> Created new data type 'GearsType'
+39426:M 18 Nov 2024 12:16:58.178 * <redisgears_2> Detected redis oss
+39426:M 18 Nov 2024 12:16:58.178 # <redisgears_2> could not initialize RedisAI_InitError
+
+39426:M 18 Nov 2024 12:16:58.178 * <redisgears_2> Failed loading RedisAI API.
+39426:M 18 Nov 2024 12:16:58.178 * <redisgears_2> RedisGears v2.0.20, sha='9b737886bf825fe29ddc2f8da81f73cbe0b4e858', build_type='release', built_for='Linux-ubuntu22.04.x86_64', redis_version:'7.4.1', enterprise:'false'.
+39426:M 18 Nov 2024 12:16:58.180 * <redisgears_2> Registered backend: js.
+39426:M 18 Nov 2024 12:16:58.180 * Module 'redisgears_2' loaded from /opt/redis-stack/lib/redisgears.so
+39426:M 18 Nov 2024 12:16:58.180 # Warning: Could not create server TCP listening socket *:6379: bind: Address already in use
+39426:M 18 Nov 2024 12:16:58.180 # Failed listening on port 6379 (tcp), aborting.
+touch: cannot touch '/var/lib/redis-stack/.testfile': Permission denied
+Starting redis-stack-server, database path /home/ubuntu/db-redis
+39630:C 18 Nov 2024 12:18:56.344 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+39630:C 18 Nov 2024 12:18:56.344 # WARNING Your system is configured to use the 'xen' clocksource which might lead to degraded performance. Check the result of the [slow-clocksource] system check: run 'redis-server --check-system' to check if the system's clocksource isn't degrading performance.
+39630:C 18 Nov 2024 12:18:56.344 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+39630:C 18 Nov 2024 12:18:56.344 * Redis version=7.4.1, bits=64, commit=00000000, modified=0, pid=39630, just started
+39630:C 18 Nov 2024 12:18:56.344 * Configuration loaded
+39630:M 18 Nov 2024 12:18:56.345 * monotonic clock: POSIX clock_gettime
+39630:M 18 Nov 2024 12:18:56.346 * Running mode=standalone, port=6379.
+39630:M 18 Nov 2024 12:18:56.347 * Module 'RedisCompat' loaded from /opt/redis-stack/lib/rediscompat.so
+39630:M 18 Nov 2024 12:18:56.348 * <search> Redis version found by RedisSearch : 7.4.1 - oss
+39630:M 18 Nov 2024 12:18:56.348 * <search> RediSearch version 2.10.5 (Git=2.10-e2f28a9)
+39630:M 18 Nov 2024 12:18:56.348 * <search> Low level api version 1 initialized successfully
+39630:M 18 Nov 2024 12:18:56.348 * <search> gc: ON, prefix min length: 2, min word length to stem: 4, prefix max expansions: 200, query timeout (ms): 500, timeout policy: return, cursor read size: 1000, cursor max idle (ms): 300000, max doctable size: 1000000, max number of search results:  10000, 
+39630:M 18 Nov 2024 12:18:56.348 * <search> Initialized thread pools!
+39630:M 18 Nov 2024 12:18:56.348 * <search> Enabled role change notification
+39630:M 18 Nov 2024 12:18:56.349 * Module 'search' loaded from /opt/redis-stack/lib/redisearch.so
+39630:M 18 Nov 2024 12:18:56.350 * <timeseries> RedisTimeSeries version 11202, git_sha=5643fd4d6fcb1e9cf084fb2deb9285b08f4a6672
+39630:M 18 Nov 2024 12:18:56.350 * <timeseries> Redis version found by RedisTimeSeries : 7.4.1 - oss
+39630:M 18 Nov 2024 12:18:56.350 * <timeseries> loaded default CHUNK_SIZE_BYTES policy: 4096
+39630:M 18 Nov 2024 12:18:56.350 * <timeseries> loaded server DUPLICATE_POLICY: block
+39630:M 18 Nov 2024 12:18:56.350 * <timeseries> loaded default IGNORE_MAX_TIME_DIFF: 0
+39630:M 18 Nov 2024 12:18:56.350 * <timeseries> loaded default IGNORE_MAX_VAL_DIFF: 0.000000
+39630:M 18 Nov 2024 12:18:56.350 * <timeseries> Setting default series ENCODING to: compressed
+39630:M 18 Nov 2024 12:18:56.350 * <timeseries> Detected redis oss
+39630:M 18 Nov 2024 12:18:56.350 * Module 'timeseries' loaded from /opt/redis-stack/lib/redistimeseries.so
+39630:M 18 Nov 2024 12:18:56.350 * <ReJSON> Created new data type 'ReJSON-RL'
+39630:M 18 Nov 2024 12:18:56.350 * <ReJSON> version: 20803 git sha: unknown branch: unknown
+39630:M 18 Nov 2024 12:18:56.350 * <ReJSON> Exported RedisJSON_V1 API
+39630:M 18 Nov 2024 12:18:56.350 * <ReJSON> Exported RedisJSON_V2 API
+39630:M 18 Nov 2024 12:18:56.350 * <ReJSON> Exported RedisJSON_V3 API
+39630:M 18 Nov 2024 12:18:56.350 * <ReJSON> Exported RedisJSON_V4 API
+39630:M 18 Nov 2024 12:18:56.350 * <ReJSON> Exported RedisJSON_V5 API
+39630:M 18 Nov 2024 12:18:56.350 * <ReJSON> Enabled diskless replication
+39630:M 18 Nov 2024 12:18:56.350 * Module 'ReJSON' loaded from /opt/redis-stack/lib/rejson.so
+39630:M 18 Nov 2024 12:18:56.350 * <search> Acquired RedisJSON_V5 API
+39630:M 18 Nov 2024 12:18:56.351 * <bf> RedisBloom version 2.8.2 (Git=unknown)
+39630:M 18 Nov 2024 12:18:56.351 * Module 'bf' loaded from /opt/redis-stack/lib/redisbloom.so
+39630:M 18 Nov 2024 12:18:56.351 * <redisgears_2> Created new data type 'GearsType'
+39630:M 18 Nov 2024 12:18:56.352 * <redisgears_2> Detected redis oss
+39630:M 18 Nov 2024 12:18:56.352 # <redisgears_2> could not initialize RedisAI_InitError
+
+39630:M 18 Nov 2024 12:18:56.352 * <redisgears_2> Failed loading RedisAI API.
+39630:M 18 Nov 2024 12:18:56.352 * <redisgears_2> RedisGears v2.0.20, sha='9b737886bf825fe29ddc2f8da81f73cbe0b4e858', build_type='release', built_for='Linux-ubuntu22.04.x86_64', redis_version:'7.4.1', enterprise:'false'.
+39630:M 18 Nov 2024 12:18:56.353 * <redisgears_2> Registered backend: js.
+39630:M 18 Nov 2024 12:18:56.353 * Module 'redisgears_2' loaded from /opt/redis-stack/lib/redisgears.so
+39630:M 18 Nov 2024 12:18:56.353 # Warning: Could not create server TCP listening socket *:6379: bind: Address already in use
+39630:M 18 Nov 2024 12:18:56.353 # Failed listening on port 6379 (tcp), aborting.
